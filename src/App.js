@@ -35,22 +35,33 @@ class App extends React.Component{
       return todo;
     })});
 }
-//Delete Todo
+//Delete Todo 
 delTodo=(id)=>{
   console.log('from app.js'+id);
+  axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(res=>this.setState({todos:[...this.state.todos.filter(todo=>todo.id!==id)]}))
   //... copy function as state
-  this.setState({todos:[...this.state.todos.filter(todo=>todo.id!==id)]});
+  //this.setState({todos:[...this.state.todos.filter(todo=>todo.id!==id)]});
 }
 
 //Add Todo
 addTodo=(title)=>{
 console.log(title);
+axios.post('https://jsonplaceholder.typicode.com/todos',{
+  id:uuid.v4(),
+  title,
+  completed:false
+}).then(res=>this.setState({
+  todos:[...this.state.todos,res.data]
+}))
+/*
 const newTodo={
   id:uuid.v4(),
   title,//title:title,
   completed:false
 }
 this.setState({todos:[...this.state.todos,newTodo]});
+*/
 }
   render(){
 
