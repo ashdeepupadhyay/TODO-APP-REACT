@@ -8,26 +8,20 @@ import About from './components/Pages/About';
 import uuid from 'uuid';
 
 import './App.css';
+import axios from 'axios';
 
 class App extends React.Component{
   state={
-    todos:[
-      {
-        id:uuid.v4(),
-        title:'learn basic',
-        completed:false
-      },
-      {
-        id:uuid.v4(),
-        title:'learn language',
-        completed:false
-      },
-      {
-        id:uuid.v4(),
-        title:'learn technology',
-        completed:false
-      }
-    ]
+    todos:[]
+  }
+
+  //another life cycle method such as render
+  componentDidMount(){
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+          .then(res=>{
+            console.log(res.data);
+            this.setState({todos:res.data})
+          })
   }
 
   //on toggle change state
