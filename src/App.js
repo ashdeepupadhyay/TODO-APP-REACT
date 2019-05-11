@@ -9,7 +9,7 @@ class App extends React.Component{
       {
         id:1,
         title:'learn basic',
-        completed:false
+        completed:true
       },
       {
         id:2,
