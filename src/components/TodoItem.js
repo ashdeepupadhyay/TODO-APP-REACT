@@ -24,14 +24,20 @@ export class TodoItem extends Component {
         }
         */
     }
+
+  
   render() {
+    const{ id,title}=this.props.todo;
     return (
         //for inline style use '{{}}' braces
         //<div  style={{backgroundColor:'#f4f4f4'}}>
         //by variables
         //<div  style={itemStyle}>
       <div  style={this.getStyle()}>
-        <p>{this.props.todo.title}</p>
+        <p>
+            <input type="checkbox" onChange={this.props.markComplete.bind(this,id)}/>{' '}
+            {title}
+        </p>
       </div>
     )
   }
