@@ -7,11 +7,16 @@ export class AddTodo extends Component {
   }
 
   //onChange=(e)=>this.setState({title:e.target.value});//if single field
-  onChange=(e)=>this.setState({[e.target.name]:e.target.value});//if multiple fields        
+  onChange=(e)=>this.setState({[e.target.name]:e.target.value});//if multiple fields         
 
+  onSubmit=(e)=>{
+      e.preventDefault();
+      this.props.addTodo(this.state.title);
+      this.setState({title:''});
+  }
   render() {
     return (
-     <form style={{display:'flex'}}>
+     <form onSubmit={this.onSubmit} style={{display:'flex'}}>
         <input 
         type="Text" 
         name="title"
