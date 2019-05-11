@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/layouts/Header'
 import Todos from './components/Todos'
+import AddTodo from './components/AddTodo'
 
 import './App.css';
 
@@ -46,11 +47,13 @@ delTodo=(id)=>{
 
     return (
       <div className="App">
-        <Header/>
-        <Todos todos={this.state.todos}
-        markComplete={this.markComplete}
-        delTodo={this.delTodo}/>
-        
+        <div className="container">
+          <Header/>
+          <AddTodo/>
+          <Todos todos={this.state.todos}
+          markComplete={this.markComplete}
+          delTodo={this.delTodo}/>
+        </div>
       </div>
     );
   }
